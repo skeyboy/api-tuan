@@ -10,7 +10,7 @@ class Controller extends BaseController {
 		return [ 'code' => $code, 'msg' => $msg, 'data' => changeArrayKey( $data ) ];
 	}
 	
-	public function error( $msg = 'success', $code = 1 ) {
+	public function error( $msg = 'error', $code = 1 ) {
 		return [ 'code' => $code, 'msg' => $msg ];
 	}
 }
