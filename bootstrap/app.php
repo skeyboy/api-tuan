@@ -1,11 +1,12 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
-
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../app/Libs/functions.php';
+require_once __DIR__ . '/../app/Libs/VerifyCode.php';
 try {
-    (new Dotenv\Dotenv(__DIR__.'/../'))->load();
-} catch (Dotenv\Exception\InvalidPathException $e) {
-    //
+	( new Dotenv\Dotenv( __DIR__ . '/../' ) )->load();
+} catch ( Dotenv\Exception\InvalidPathException $e ) {
+	//
 }
 
 /*
@@ -20,12 +21,12 @@ try {
 */
 
 $app = new Laravel\Lumen\Application(
-    realpath(__DIR__.'/../')
+	realpath( __DIR__ . '/../' )
 );
 
-// $app->withFacades();
+$app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -39,13 +40,13 @@ $app = new Laravel\Lumen\Application(
 */
 
 $app->singleton(
-    Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+	Illuminate\Contracts\Debug\ExceptionHandler::class,
+	App\Exceptions\Handler::class
 );
 
 $app->singleton(
-    Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
+	Illuminate\Contracts\Console\Kernel::class,
+	App\Console\Kernel::class
 );
 
 /*
@@ -93,10 +94,10 @@ $app->singleton(
 |
 */
 
-$app->router->group([
-    'namespace' => 'App\Http\Controllers',
-], function ($router) {
-    require __DIR__.'/../routes/web.php';
-});
+$app->router->group( [
+	'namespace' => 'App\Http\Controllers',
+], function ( $router ) {
+	require __DIR__ . '/../routes/web.php';
+} );
 
 return $app;

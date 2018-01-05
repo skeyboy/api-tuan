@@ -10,7 +10,10 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+$router->group( [ 'namespace' => 'v1', 'prefix' => 'api/v1' ], function () use ( $router ) {
+	//注册
+	$router->post('/register/doReg','RegisterController@doReg');
+	//注册第二步，选择高校，注册时候可选
+	$router->get('/register/schoolList','RegisterController@schoolList');
+	$router->get( '/', 'IndexController@index' );
+} );
