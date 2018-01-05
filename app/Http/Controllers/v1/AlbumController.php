@@ -28,7 +28,7 @@ class AlbumController extends Controller {
 	
 	//获得用户的相册
 	public function getAlbumListByUid( Request $request ) {
-	
+		return $this->success( $this->albumRepository->getAlbumListByUid( Auth::user()->id ) );
 	}
 	
 	//创建一个相册
@@ -69,7 +69,7 @@ class AlbumController extends Controller {
 			$tmp['album_id'] = $albumId;
 			$tmp['pic']      = $pic;
 			$tmp['user_id']  = $uid;
-			$data[] = $tmp;
+			$data[]          = $tmp;
 		}
 		$this->albumRepository->addPicToUserAlbum( $data );
 		

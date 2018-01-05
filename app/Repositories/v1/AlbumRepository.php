@@ -17,7 +17,11 @@ class AlbumRepository {
 		return AlbumModel::insert( [ 'name' => $albumName, 'user_id' => $uid, 'private' => $private ] );
 	}
 	
-	public function addPicToUserAlbum($data) {
+	public function addPicToUserAlbum( $data ) {
 		return UserAlbumPicModel::insert( $data );
+	}
+	
+	public function getAlbumListByUid( $uid ) {
+		return AlbumModel::where( 'user_id', $uid )->paginate( 15 )->toArray();
 	}
 }
