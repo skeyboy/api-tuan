@@ -22,5 +22,6 @@ $router->group( [ 'namespace' => 'v1', 'prefix' => 'api/v1' ], function () use (
 		//相册
 		//创建一个相册
 		$router->post( '/album/create', 'AlbumController@createAlbumByUser' );
+		$router->post( '/album/addPicToAlbum', 'AlbumController@addPicToAlbum' );
 	} );
 } );

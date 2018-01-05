@@ -42,6 +42,7 @@ class AlbumController extends Controller {
 		if ( $res ) {
 			return $this->success();
 		}
+		
 		return $this->error( '创建失败！稍后重试！' );
 	}
 	
@@ -52,6 +53,26 @@ class AlbumController extends Controller {
 	
 	//为相册添加照片
 	public function addPicToAlbum( Request $request ) {
-	
+		$albumId = $request->get( 'albumId' );
+		$pics    = $request->get( 'pics' );
+		if ( ! $albumId ) {
+			return $this->error( '相册id不可以为空' );
+		}
+		if ( ! $pics ) {
+			return $this->error( '图片不可以为空' );
+		}
+		$pics = explode( ',', $pics );
+		$data = [];
+		$uid  = Auth::user()->id;
+		foreach ( $pics as $pic ) {
+			$tmp             = [];
+			$tmp['album_id'] = $albumId;
+			$tmp['pic']      = $pic;
+			$tmp['user_id']  = $uid;
+			$data[] = $tmp;
+		}
+		$this->albumRepository->addPicToUserAlbum( $data );
+		
+		return $this->success();
 	}
 }

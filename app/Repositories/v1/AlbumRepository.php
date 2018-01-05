@@ -10,9 +10,14 @@ namespace App\Repositories\v1;
 
 
 use App\Models\AlbumModel;
+use App\Models\UserAlbumPicModel;
 
 class AlbumRepository {
 	public function createAlbumByUid( $albumName, $uid, $private = 0 ) {
 		return AlbumModel::insert( [ 'name' => $albumName, 'user_id' => $uid, 'private' => $private ] );
+	}
+	
+	public function addPicToUserAlbum($data) {
+		return UserAlbumPicModel::insert( $data );
 	}
 }
