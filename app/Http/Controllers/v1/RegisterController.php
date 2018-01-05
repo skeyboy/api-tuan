@@ -30,10 +30,10 @@ class RegisterController extends Controller {
 	}
 	
 	public function doReg( Request $request ) {
-		$userName  = $request->get( 'userName' );
-		$password  = $request->get( 'password' );
-		$user = $this->userRepository->getUserByName( $userName );
-		if ($user) {
+		$userName = $request->get( 'userName' );
+		$password = $request->get( 'password' );
+		$user     = $this->userRepository->getUserByName( $userName );
+		if ( $user ) {
 			return $this->error( '用户已经存在！' );
 		}
 		$messages  = [
@@ -48,10 +48,13 @@ class RegisterController extends Controller {
 		if ( $validator->fails() ) {
 			return $this->error( '用户名或者密码不符合要求' );
 		} else {
-			$res=$this->userRepository->addUser( $userName, $password );
-			if ($res) {
-				return $this->success();
+			$uid = $this->userRepository->addUser( $userName, $password );
+			if ( $uid ) {
+				$user = $this->userRepository->getUserById( $uid );
+				
+				return $this->success( $user );
 			}
+			
 			return $this->error( '失败了，稍后重试！' );
 		}
 	}

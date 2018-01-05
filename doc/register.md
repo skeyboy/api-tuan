@@ -3,9 +3,8 @@
 
 - 接口地址：/register/doReg
 - 接口形式：post 
-- 输入参数：userName 用户名     password 密码 
-- 输出参数：
-schoolList 校园列表： id 校园id    name 高校名称
+- 输入参数：userName 用户名     password 密码  
+- 输出参数：   apiToken 用户的token
 - curl调用示例：curl -X POST \
              http://127.0.0.1:1004/api/v1/register/doReg \
              -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
@@ -23,6 +22,23 @@ schoolList 校园列表： id 校园id    name 高校名称
         "password": [
             "密码长度至少6位"
         ]
+    }
+}
+
+
+
+{
+    "code": 0,
+    "msg": "success",
+    "data": {
+        "id": 1,
+        "schoolId": 0,
+        "userName": "hanyun",
+        "mobile": "",
+        "addTime": "",
+        "avatar": "",
+        "distictId": 0,
+        "apiToken": "91e65d721bc7fe4d4decd764c32d23db"
     }
 }
 ```

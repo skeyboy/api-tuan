@@ -10,11 +10,16 @@ namespace App\Http\Controllers\v1;
 
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class TuanController extends Controller {
 	public function index() {
 		return [
 			1,
 		];
+	}
+	
+	public function create(Request $request) {
+	
 	}
 }

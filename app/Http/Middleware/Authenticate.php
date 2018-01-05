@@ -36,7 +36,7 @@ class Authenticate
     public function handle($request, Closure $next, $guard = null)
     {
         if ($this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', 401);
+            return [ 'code' => -1, 'msg' => 'token错误，认证失败' ];;
         }
 
         return $next($request);
