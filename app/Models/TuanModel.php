@@ -13,4 +13,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class TuanModel extends Model {
 	protected $table = 'tuan';
+	public $timestamps = false;
 }

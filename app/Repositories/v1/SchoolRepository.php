@@ -29,4 +29,8 @@ class SchoolRepository {
 		}
 		return $districts;
 	}
+	
+	public function getSchoolById($school_id) {
+		return SchoolModel::where( 'id', $school_id )->first();
+	}
 }

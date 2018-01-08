@@ -22,6 +22,8 @@ $router->group( [ 'namespace' => 'v1', 'prefix' => 'api/v1' ], function () use (
 	
 	
 	$router->group( [ 'middleware' => 'auth' ], function () use ( $router ) {
+		//社团相关
+		//创建社团
 		$router->post( '/tuan/create', 'TuanController@create' );
 		//相册
 		//创建一个相册
