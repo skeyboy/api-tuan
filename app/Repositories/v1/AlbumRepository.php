@@ -18,10 +18,23 @@ class AlbumRepository {
 	}
 	
 	public function addPicToUserAlbum( $data ) {
+		$data['add_time'] = time();
 		return UserAlbumPicModel::insert( $data );
 	}
 	
 	public function getAlbumListByUid( $uid ) {
 		return AlbumModel::where( 'user_id', $uid )->paginate( 15 )->toArray();
+	}
+	
+	public function getAlbumList() {
+		return AlbumModel::where( 'private', 0 )->paginate( 15 )->toArray();
+	}
+	
+	public function changeCover( $albumId, $cover, $uid ) {
+		$data['cover'] = $cover;
+		$data['update_time'] = time();
+		return AlbumModel::where( 'id', $albumId )
+		                 ->where( 'user_id', $uid )
+		                 ->update( $data );
 	}
 }

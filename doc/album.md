@@ -191,3 +191,73 @@
     }
 }
 ```
+
+
+
+####修改相册相面
+
+- 接口地址：/album/changeCover
+- 接口形式：post 
+- 输入参数：api_token 用户的token  ， albumId 相册id ， cover 封面
+- 输出参数：
+- curl调用示例：curl -X POST \
+             http://127.0.0.1:1004/api/v1/album/changeCover \
+             -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+             -F api_token=91e65d721bc7fe4d4decd764c32d23db \
+             -F albumId=1 \
+             -F cover=111111
+*code* | *Description*
+
+*0* | *成功*
+
+```javascript
+{
+    "code": 0,
+    "msg": "success",
+    "data": []
+}
+```
+
+
+####获得所有的公开相册列表
+
+- 接口地址：/album/changeCover
+- 接口形式：get 
+- 输入参数：
+- 输出参数：private 0表示私有 1 表示公开 默认是1
+- curl调用示例：curl -X GET \
+             http://127.0.0.1:1004/api/v1/album/getAlbumList
+*code* | *Description*
+
+*0* | *成功*
+
+```javascript
+{
+    "code": 0,
+    "msg": "success",
+    "data": {
+        "currentPage": 1,
+        "data": [
+            {
+                "id": 1,
+                "userId": 1,
+                "cover": "111111",
+                "name": "11111",
+                "addTime": "",
+                "private": 0,
+                "updateTime": 1515378604
+            }
+        ],
+        "firstPageUrl": "http://127.0.0.1:1004/api/v1/album/getAlbumList?page=1",
+        "from": 1,
+        "lastPage": 1,
+        "lastPageUrl": "http://127.0.0.1:1004/api/v1/album/getAlbumList?page=1",
+        "nextPageUrl": "",
+        "path": "http://127.0.0.1:1004/api/v1/album/getAlbumList",
+        "perPage": 15,
+        "prevPageUrl": "",
+        "to": 1,
+        "total": 1
+    }
+}
+```

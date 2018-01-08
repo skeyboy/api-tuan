@@ -23,7 +23,7 @@ class AlbumController extends Controller {
 	
 	//获得所有公开的相册
 	public function getAlbumList() {
-	
+		return $this->success( $this->albumRepository->getAlbumList() );
 	}
 	
 	//获得用户的相册
@@ -74,5 +74,19 @@ class AlbumController extends Controller {
 		$this->albumRepository->addPicToUserAlbum( $data );
 		
 		return $this->success();
+	}
+	//修改相册封面
+	public function changeCover( Request $request ) {
+		$cover   = $request->get( 'cover' );
+		$albumId = $request->get( 'albumId' );
+		if ( ! $cover ) {
+			$this->error( '请选择封面' );
+		}
+		$res=$this->albumRepository->changeCover( $albumId, $cover, Auth::User()->id );
+		if ($res) {
+			return $this->success();
+		}
+		
+		return $this->error();
 	}
 }

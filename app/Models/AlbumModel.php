@@ -13,4 +13,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class AlbumModel extends Model {
 	protected $table = 'user_album';
+	public $timestamps = false;
 }
