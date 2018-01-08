@@ -22,7 +22,8 @@ $router->group( [ 'namespace' => 'v1', 'prefix' => 'api/v1' ], function () use (
 	//社团
 	//社团分类列表
 	$router->get( '/tuan/categoryList', 'TuanController@getTuanCategoryList' );
-	
+	//社团列表
+	$router->get( '/tuan/list', 'TuanController@tuanList' );
 	
 	$router->group( [ 'middleware' => 'auth' ], function () use ( $router ) {
 		//社团相关

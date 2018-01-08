@@ -69,7 +69,11 @@ class TuanController extends Controller {
 		
 		return $this->error();
 	}
-	
+	//社团列表
+	public function tuanList() {
+		return $this->success( $this->tuanRepository->getTuanList() );
+	}
+	// 社团分类列表
 	public function getTuanCategoryList() {
 		return $this->success( $this->tuanRepository->getTuanCategoryList() );
 	}

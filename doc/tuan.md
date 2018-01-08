@@ -30,7 +30,7 @@
 
 - 接口地址：/tuan/categoryList
 - 接口形式：get 
-- 输入参数：id 社团分类id ， name 社团分类名称
+- 输入参数：
 - 输出参数：
 - curl调用示例：curl -X GET \
              http://127.0.0.1:1004/api/v1/tuan/categoryList
@@ -56,6 +56,52 @@
         "lastPageUrl": "http://127.0.0.1:1004/api/v1/tuan/categoryList?page=1",
         "nextPageUrl": "",
         "path": "http://127.0.0.1:1004/api/v1/tuan/categoryList",
+        "perPage": 15,
+        "prevPageUrl": "",
+        "to": 1,
+        "total": 1
+    }
+}
+```
+
+
+
+####社团列表
+
+- 接口地址：/tuan/list
+- 接口形式：get 
+- 输入参数：
+- 输出参数：id 社团id ，name 社团名称 ， logo 社团 logo ，categoryId 社团分类id ， description 社团简介
+- curl调用示例：curl -X GET \
+             http://127.0.0.1:1004/api/v1/tuan/list
+*code* | *Description*
+
+*0* | *成功*
+
+```javascript
+{
+    "code": 0,
+    "msg": "success",
+    "data": {
+        "currentPage": 1,
+        "data": [
+            {
+                "id": 1,
+                "name": "1",
+                "schoolId": 1,
+                "userId": 1,
+                "logo": "1",
+                "addTime": 1515381289,
+                "categoryId": 1,
+                "description": "111111"
+            }
+        ],
+        "firstPageUrl": "http://127.0.0.1:1004/api/v1/tuan/list?page=1",
+        "from": 1,
+        "lastPage": 1,
+        "lastPageUrl": "http://127.0.0.1:1004/api/v1/tuan/list?page=1",
+        "nextPageUrl": "",
+        "path": "http://127.0.0.1:1004/api/v1/tuan/list",
         "perPage": 15,
         "prevPageUrl": "",
         "to": 1,

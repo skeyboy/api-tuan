@@ -31,4 +31,8 @@ class TuanRepository {
 	public function getTuanCategoryById( $category_id ) {
 		return TuanCategoryModel::where( 'id', $category_id )->first();
 	}
+	
+	public function getTuanList() {
+		return TuanModel::orderby( 'id', 'desc' )->paginate( 15 )->toArray();
+	}
 }
