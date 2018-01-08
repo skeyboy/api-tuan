@@ -53,6 +53,10 @@ class TuanController extends Controller {
 		if ( ! $user->school_id ) {
 			return $this->error( '请先完善用户信息！' );
 		}
+		$category = $this->tuanRepository->getTuanCategoryById( $category_id );
+		if (!$category) {
+			return $this->error( '社团分类不存在！' );
+		}
 		$data['name']        = $name;
 		$data['logo']        = $logo;
 		$data['category_id'] = $category_id;
