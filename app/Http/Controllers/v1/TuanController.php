@@ -69,4 +69,8 @@ class TuanController extends Controller {
 		
 		return $this->error();
 	}
+	
+	public function getTuanCategoryList() {
+		return $this->success( $this->tuanRepository->getTuanCategoryList() );
+	}
 }

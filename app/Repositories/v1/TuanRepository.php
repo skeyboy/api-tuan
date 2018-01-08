@@ -13,21 +13,22 @@ use App\Models\TuanCategoryModel;
 use App\Models\TuanModel;
 
 class TuanRepository {
-	public function create($uid,$data) {
+	public function create( $uid, $data ) {
 		$data['add_time'] = time();
-		$data['user_id'] = $uid;
+		$data['user_id']  = $uid;
+		
 		return TuanModel::insert( $data );
 	}
 	
-	public function getTuanByName($name) {
+	public function getTuanByName( $name ) {
 		return TuanModel::where( 'name', $name )->first();
 	}
 	
 	public function getTuanCategoryList() {
-	
+		return TuanCategoryModel::paginate( 15 )->toArray();
 	}
 	
-	public function getTuanCategoryById($category_id) {
+	public function getTuanCategoryById( $category_id ) {
 		return TuanCategoryModel::where( 'id', $category_id )->first();
 	}
 }

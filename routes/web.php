@@ -19,6 +19,9 @@ $router->group( [ 'namespace' => 'v1', 'prefix' => 'api/v1' ], function () use (
 	//相册相关
 	//获得所有的公开相册
 	$router->get( '/album/getAlbumList', 'AlbumController@getAlbumList' );
+	//社团
+	//社团分类列表
+	$router->get( '/tuan/categoryList', 'TuanController@getTuanCategoryList' );
 	
 	
 	$router->group( [ 'middleware' => 'auth' ], function () use ( $router ) {

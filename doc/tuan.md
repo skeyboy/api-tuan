@@ -24,3 +24,42 @@
     "msg": "该院校社团已经存在！换个名称试试！"
 }
 ```
+
+
+####社团分类
+
+- 接口地址：/tuan/categoryList
+- 接口形式：get 
+- 输入参数：id 社团分类id ， name 社团分类名称
+- 输出参数：
+- curl调用示例：curl -X GET \
+             http://127.0.0.1:1004/api/v1/tuan/categoryList
+*code* | *Description*
+
+*0* | *成功*
+
+```javascript
+{
+    "code": 0,
+    "msg": "success",
+    "data": {
+        "currentPage": 1,
+        "data": [
+            {
+                "id": 1,
+                "name": "分类1"
+            }
+        ],
+        "firstPageUrl": "http://127.0.0.1:1004/api/v1/tuan/categoryList?page=1",
+        "from": 1,
+        "lastPage": 1,
+        "lastPageUrl": "http://127.0.0.1:1004/api/v1/tuan/categoryList?page=1",
+        "nextPageUrl": "",
+        "path": "http://127.0.0.1:1004/api/v1/tuan/categoryList",
+        "perPage": 15,
+        "prevPageUrl": "",
+        "to": 1,
+        "total": 1
+    }
+}
+```
