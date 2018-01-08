@@ -52,7 +52,15 @@ class TuanRepository {
 		                     ->update( $data );
 	}
 	
+	public function getTuanAlbumById( $id ) {
+		return TuanAlbumModel::where( 'id', $id )->first();
+	}
+	
 	public function getTuanByUserId( $uid ) {
 		return TuanModel::where( 'user_id', $uid )->first();
+	}
+	
+	public function getTuanAlbumList() {
+		return TuanAlbumModel::orderby( 'id', 'desc' )->paginate( 15 )->toArray();
 	}
 }

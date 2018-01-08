@@ -158,3 +158,118 @@
     "msg": "你没有这个权限！"
 }
 ```
+
+####社团相册列表
+
+- 接口地址：/tuan/album/list
+- 接口形式：get 
+- 输入参数：
+- 输出参数：
+- curl调用示例：curl -X GET \
+             http://127.0.0.1:1004/api/v1/tuan/album/list
+*code* | *Description*
+
+*0* | *成功*
+
+```javascript
+{
+    "code": 0,
+    "msg": "success",
+    "data": {
+        "currentPage": 1,
+        "data": [
+            {
+                "id": 9,
+                "name": "1111",
+                "cover": "",
+                "tuanId": 1,
+                "addTime": 1515393164,
+                "private": 0,
+                "updateTime": ""
+            },
+            {
+                "id": 8,
+                "name": "1111",
+                "cover": "",
+                "tuanId": 1,
+                "addTime": 1515392575,
+                "private": 0,
+                "updateTime": ""
+            },
+            {
+                "id": 7,
+                "name": "1111",
+                "cover": "",
+                "tuanId": 1,
+                "addTime": 1515392575,
+                "private": 0,
+                "updateTime": ""
+            },
+            {
+                "id": 6,
+                "name": "1111",
+                "cover": "",
+                "tuanId": 1,
+                "addTime": 1515392575,
+                "private": 0,
+                "updateTime": ""
+            },
+            {
+                "id": 5,
+                "name": "1111",
+                "cover": "",
+                "tuanId": 1,
+                "addTime": 1515392502,
+                "private": "",
+                "updateTime": ""
+            },
+            {
+                "id": 4,
+                "name": "1111",
+                "cover": "",
+                "tuanId": 1,
+                "addTime": 1515392502,
+                "private": "",
+                "updateTime": ""
+            },
+            {
+                "id": 3,
+                "name": "1111",
+                "cover": "",
+                "tuanId": 1,
+                "addTime": 1515392501,
+                "private": "",
+                "updateTime": ""
+            },
+            {
+                "id": 2,
+                "name": "1111",
+                "cover": "",
+                "tuanId": 1,
+                "addTime": 1515392497,
+                "private": "",
+                "updateTime": ""
+            },
+            {
+                "id": 1,
+                "name": "1111",
+                "cover": "1111",
+                "tuanId": 1,
+                "addTime": 1515392451,
+                "private": "",
+                "updateTime": 1515394052
+            }
+        ],
+        "firstPageUrl": "http://127.0.0.1:1004/api/v1/tuan/album/list?page=1",
+        "from": 1,
+        "lastPage": 1,
+        "lastPageUrl": "http://127.0.0.1:1004/api/v1/tuan/album/list?page=1",
+        "nextPageUrl": "",
+        "path": "http://127.0.0.1:1004/api/v1/tuan/album/list",
+        "perPage": 15,
+        "prevPageUrl": "",
+        "to": 9,
+        "total": 9
+    }
+}
+```

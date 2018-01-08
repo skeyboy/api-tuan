@@ -101,7 +101,25 @@ class TuanController extends Controller {
 	
 	//为社团相册添加照片
 	public function addPicToTuanAlbum( Request $request ) {
-	
+		$pics = $request->get( 'pics' );
+		if ( ! $pics ) {
+			return $this->error( '图片不可以为空！' );
+		}
+		$albumId = $request->get( 'albumId' );
+		if (!$albumId) {
+			return $this->error( '相册id不可以为空！' );
+		}
+		$uid  = Auth::user()->id;
+		$tuan = $this->tuanRepository->getTuanByUserId( $uid );
+		$album = $this->tuanRepository->getTuanAlbumById( $albumId );
+		if (!$album) {
+			return $this->error( '相册不存在！' );
+		}
+		if (!$tuan||($tuan->id!=$album->tuan_id)) {
+			return $this->error( '你没有这个权限！' );
+		}
+		
+		return $this->success();
 	}
 	
 	//为社团相册设置封面
@@ -127,5 +145,9 @@ class TuanController extends Controller {
 		}
 		
 		return $this->error();
+	}
+	//社团相册列表
+	public function getTuanAlbumList() {
+		return $this->success( $this->tuanRepository->getTuanAlbumList() );
 	}
 }
