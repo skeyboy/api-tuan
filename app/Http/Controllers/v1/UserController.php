@@ -13,5 +13,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
-
+	//加入社团
+	public function joinTuan() {
+	
+	}
+	
+	//关注社团
+	public function followTuan( Request $request ) {
+	
+	}
 }

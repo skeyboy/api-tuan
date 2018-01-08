@@ -29,6 +29,10 @@ $router->group( [ 'namespace' => 'v1', 'prefix' => 'api/v1' ], function () use (
 		//社团相关
 		//创建社团
 		$router->post( '/tuan/create', 'TuanController@create' );
+		//创建社团相册
+		$router->post( '/tuan/album/create', 'TuanController@createAlbum' );
+		//为社团相册设置封面
+		$router->post( '/tuan/album/cover', 'TuanController@changeCover' );
 		//相册
 		//创建一个相册
 		$router->post( '/album/create', 'AlbumController@createAlbumByUser' );

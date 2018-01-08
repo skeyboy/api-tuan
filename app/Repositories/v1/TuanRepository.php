@@ -9,8 +9,10 @@
 namespace App\Repositories\v1;
 
 
+use App\Models\TuanAlbumModel;
 use App\Models\TuanCategoryModel;
 use App\Models\TuanModel;
+use App\Models\TuanUserModel;
 
 class TuanRepository {
 	public function create( $uid, $data ) {
@@ -34,5 +36,23 @@ class TuanRepository {
 	
 	public function getTuanList() {
 		return TuanModel::orderby( 'id', 'desc' )->paginate( 15 )->toArray();
+	}
+	
+	public function createTuanAlbum( $tuanId, $data ) {
+		$data['add_time'] = time();
+		$data['tuan_id']  = $tuanId;
+		
+		return TuanAlbumModel::insert( $data );
+	}
+	
+	public function changeCover( $albumId, $data ) {
+		$data['update_time'] = time();
+		
+		return TuanAlbumModel::where( 'id', $albumId )
+		                     ->update( $data );
+	}
+	
+	public function getTuanByUserId( $uid ) {
+		return TuanModel::where( 'user_id', $uid )->first();
 	}
 }

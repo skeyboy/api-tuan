@@ -54,7 +54,7 @@ class TuanController extends Controller {
 			return $this->error( '请先完善用户信息！' );
 		}
 		$category = $this->tuanRepository->getTuanCategoryById( $category_id );
-		if (!$category) {
+		if ( ! $category ) {
 			return $this->error( '社团分类不存在！' );
 		}
 		$data['name']        = $name;
@@ -69,12 +69,63 @@ class TuanController extends Controller {
 		
 		return $this->error();
 	}
+	
 	//社团列表
 	public function tuanList() {
 		return $this->success( $this->tuanRepository->getTuanList() );
 	}
+	
 	// 社团分类列表
 	public function getTuanCategoryList() {
 		return $this->success( $this->tuanRepository->getTuanCategoryList() );
+	}
+	
+	//创建社团相册
+	public function createAlbum( Request $request ) {
+		$user    = Auth::user();
+		$tuan    = $this->tuanRepository->getTuanByUserId( $user->id );
+		$name    = $request->get( 'name' );
+		$private = $request->get( 'private', 0 );
+		if ( ! $name ) {
+			return $this->error( '相册名称不可以为空！' );
+		}
+		$data['name']    = $name;
+		$data['private'] = $private;
+		$res             = $this->tuanRepository->createTuanAlbum( $tuan->tuan_id, $data );
+		if ( $res ) {
+			return $this->success();
+		}
+		
+		return $this->error();
+	}
+	
+	//为社团相册添加照片
+	public function addPicToTuanAlbum( Request $request ) {
+	
+	}
+	
+	//为社团相册设置封面
+	public function changeCover( Request $request ) {
+		$cover = $request->get( 'cover' );
+		if ( ! $cover ) {
+			return $this->error( '封面不可以为空！' );
+		}
+		$albumId = $request->get( 'albumId' );
+		if ( ! $albumId ) {
+			return $this->error( '相册id不可以为空！' );
+		}
+		$uid  = Auth::user()->id;
+		$tuan = $this->tuanRepository->getTuanByUserId( $uid );
+		if ( ! $tuan || ( $tuan->user_id != $uid ) ) {
+			return $this->error( '你没有这个权限！' );
+		}
+		$data['cover'] = $cover;
+		
+		$res = $this->tuanRepository->changeCover( $albumId, $data );
+		if ( $res ) {
+			return $this->success();
+		}
+		
+		return $this->error();
 	}
 }
