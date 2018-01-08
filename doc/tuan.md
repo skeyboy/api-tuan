@@ -132,4 +132,29 @@
     "code": 0,
     "msg": "success",
     "data": []
-}```
+}
+```
+
+
+####设置社团相册封面
+
+- 接口地址：/tuan/album/cover
+- 接口形式：post 
+- 输入参数：api_token token ， cover 封面地址 ， albumId 相册id
+- 输出参数：
+- curl调用示例：curl -X POST \
+             http://127.0.0.1:1004/api/v1/tuan/album/cover \
+             -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+             -F api_token=49e58778548fdf8cef7796d66cceeb2d \
+             -F cover=1111 \
+             -F albumId=1
+*code* | *Description*
+
+*0* | *成功*
+
+```javascript
+{
+    "code": 1,
+    "msg": "你没有这个权限！"
+}
+```
